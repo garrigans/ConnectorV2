@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/grey_texture"
+    tools:context="com.projects.haxor.connector.ui.MainActivityCon">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+        android:elevation="4dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:grid="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/choice_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_centerHorizontal="true"
+        android:padding="4dp"
+
+        grid:alignmentMode="alignBounds"
+        grid:columnCount="2"
+        grid:rowOrderPreserved="false"
+        grid:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/buttonTestRoute"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="Test Route"
+            android:onClick="launchTraceActivity"
+            android:alpha="0.85"
+            android:background="#00b300" />
+
+        <Button
+            android:id="@+id/buttonTestVpnConnection"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="Test VPN"
+            android:onClick="launchTestVpnActivity"
+            android:alpha="0.85"
+            android:background="#00b300" />
+
+        <Button
+            android:id="@+id/buttonIpDetailsLookup"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="IP Lookup"
+            android:onClick="launchLookupIpActivity"
+            android:alpha="0.85"
+            android:background="#00b300" />
+
+        <Button
+            android:id="@+id/buttonHelp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="Help"
+            android:onClick="launchHelpActivity"
+            android:alpha="0.85"
+            android:background="#00b300" />
+
+        <Button
+            android:id="@+id/buttonTestPort"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="Test Port Access"
+            android:onClick="launchTestPortActivity"
+            android:alpha="0.85"
+            android:background="#00b300" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:alpha="0.85"
+            android:background="#00b300"
+            android:text="Tile3" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:alpha="0.85"
+            android:background="#00b300"
+            android:text="Tile4" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:alpha="0.85"
+            android:background="#00b300"
+            android:text="Tile5" />
+
+    </android.support.v7.widget.GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/choice_grid"
+        android:text="All Rights Reserved " />
+</RelativeLayout>
+

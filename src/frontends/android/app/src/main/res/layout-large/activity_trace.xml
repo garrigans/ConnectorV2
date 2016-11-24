@@ -1,0 +1,91 @@
+
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.projects.haxor.connector.connector.ui.TraceActivity">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#000000"
+        android:elevation="4dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <EditText
+        android:id="@+id/editTextPing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter ip or domain"
+        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:inputType="text"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/buttonLaunch"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextPing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Launch"
+        android:background="@android:color/darker_gray" />
+
+    <ProgressBar
+        android:id="@+id/progressBarPing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextPing"
+        android:layout_toRightOf="@+id/buttonLaunch"
+        android:layout_marginTop="15dp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/buttonTestVpn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLaunch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:onClick="launchTestVpnActivity"
+        android:text="Test VPN"
+        android:background="@android:color/darker_gray"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonTestVpn">
+
+        <ListView
+            android:id="@+id/listViewTraceroute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewOverallStatus"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" >
+        </ListView>
+
+
+
+        <TextView
+            android:text="......."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:layout_marginTop="5dp"
+            android:id="@+id/textViewOverallStatus" />
+    </RelativeLayout>
+
+</RelativeLayout>
