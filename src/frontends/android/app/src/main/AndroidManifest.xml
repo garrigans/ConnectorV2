@@ -27,102 +27,84 @@
         android:label="Connector"
         android:theme="@style/ApplicationTheme">
 
-         <activity
-         android:name=".connector.ui.MainActivityCon"
-         android:label="Connector">
-         <intent-filter>
-         <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".connector.ui.OverallMainActivity"
+            android:label="Connector">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
-         <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-         </activity>
+        </activity>
 
+        <activity
+            android:name=".connector.ui.MainActivityCon"
+            android:label="Connector">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".connector.ui.OverallMainActivity" />
+
+        </activity>
         <activity
             android:name=".connector.ui.TraceActivity"
             android:label="Trace Route"
             android:parentActivityName=".connector.ui.MainActivityCon"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
 
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".connector.ui.MainActivityCon" />
         </activity>
+        <activity
+            android:name=".connector.ui.IPLookupActivity"
+            android:label="IP Lookup"
+            android:parentActivityName=".connector.ui.MainActivityCon">
 
-         <activity
-         android:name="org.strongswan.android.connector.ui.IPLookupActivity"
-         android:label="IP Lookup"
-         android:parentActivityName="org.strongswan.android.connector.ui.MainActivityCon">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.strongswan.android.connector.ui.MainActivityCon" />
+        </activity>
 
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="IP Lookup"
+            android:parentActivityName=".connector.ui.MainActivityCon">
 
-         <!-- Parent activity meta-data to support 4.0 and lower -->
-         <meta-data
-         android:name="android.support.PARENT_ACTIVITY"
-         android:value="org.strongswan.android.connector.ui.MainActivityCon" />
-         </activity>
-
-
-         <!--<service-->
-         <!--android:name="com.projects.haxor.connector.enums.network.ConnectorVpnService"-->
-         <!--android:permission="android.permission.BIND_VPN_SERVICE">-->
-         <!--<intent-filter>-->
-         <!--<action android:name="android.net.VpnService" />-->
-         <!--</intent-filter>-->
-         <!--</service>-->
-
-
-
-    <activity
-        android:name=".ui.MainActivity"
-        android:label="IP Lookup"
-        android:parentActivityName="org.strongswan.android.connector.ui.MainActivityCon">
-
-
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="org.strongswan.android.connector.ui.MainActivityCon" />
-    </activity>
-
-
-         <activity
-             android:name="org.strongswan.android.connector.ui.HelpActivity"
-             android:label="Help"
-             android:parentActivityName="org.strongswan.android.connector.ui.MainActivityCon">
-         <meta-data
-             android:name="android.support.PARENT_ACTIVITY"
-             android:value="org.strongswan.android.connector.ui.MainActivityCon" />
-         </activity>
-
-         <activity android:name="org.strongswan.android.connector.ui.TestPortAccess"
-             android:label="Test Port Access"
-             android:parentActivityName="org.strongswan.android.connector.ui.MainActivityCon">
-             <meta-data
-                 android:name="android.support.PARENT_ACTIVITY"
-                 android:value="org.strongswan.android.connector.ui.MainActivityCon" />
-
-         </activity>
-
-
-
-
-
-
-
-
-
-        <activity android:name=".ui.VpnProfileDetailActivity"></activity>
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.strongswan.android.connector.ui.OverallMainActivity" />
+        </activity>
+        <activity
+            android:name=".connector.ui.HelpActivity"
+            android:label="Help"
+            android:parentActivityName=".connector.ui.MainActivityCon">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.strongswan.android.connector.ui.MainActivityCon" />
+        </activity>
+        <activity
+            android:name=".connector.ui.TestPortAccess"
+            android:label="Test Port Access"
+            android:parentActivityName=".connector.ui.MainActivityCon">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.strongswan.android.connector.ui.MainActivityCon" />
+        </activity>
+        <activity android:name=".ui.VpnProfileDetailActivity" />
         <activity
             android:name=".ui.TrustedCertificatesActivity"
-            android:label="@string/trusted_certs_title"></activity>
+            android:label="@string/trusted_certs_title" />
         <activity
             android:name=".ui.LogActivity"
-            android:label="@string/log_title"></activity>
+            android:label="@string/log_title" />
         <activity
             android:name=".ui.RemediationInstructionsActivity"
-            android:label="@string/remediation_instructions_title"></activity>
+            android:label="@string/remediation_instructions_title" />
         <activity
             android:name=".ui.VpnProfileSelectActivity"
             android:label="@string/strongswan_shortcut">
@@ -150,7 +132,7 @@
 
         <service
             android:name=".logic.VpnStateService"
-            android:exported="false"></service>
+            android:exported="false" />
         <service
             android:name=".logic.CharonVpnService"
             android:exported="false"

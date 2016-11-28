@@ -20,6 +20,7 @@ along with TraceroutePing.  If not, see <http://www.gnu.org/licenses/>.
 package org.strongswan.android.connector.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,7 @@ import org.strongswan.android.connector.enums.ResusltStatus;
 import org.strongswan.android.connector.enums.RouteStatus;
 import org.strongswan.android.connector.network.TracerouteContainer;
 import org.strongswan.android.connector.network.TracerouteWithPing;
+import org.strongswan.android.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -289,11 +291,11 @@ public class TraceActivity extends AppCompatActivity {
 		}
 	}
 
-//	public void launchTestVpnActivity(View v){
-//		System.out.println("Test VPN");
-//		Intent intent = new Intent(TraceActivity.this, TestVpnActivity.class);
-//		startActivity(intent);
-//	}
+	public void launchTestVpnActivity(View v){
+		System.out.println("Test VPN");
+		Intent intent = new Intent(TraceActivity.this, MainActivity.class);
+		startActivity(intent);
+	}
 
 	public void startProgressBar() {
 		progressBarPing.setVisibility(View.VISIBLE);
@@ -307,8 +309,5 @@ public class TraceActivity extends AppCompatActivity {
 
 	public void removeTestVpnButton() { buttonTestVpn.setVisibility(View.GONE);}
 
-//	public void setBackgroundColour(int colour){
-//		findViewById(android.R.id.content).setBackgroundColor(colour);
-//	}
 
 }

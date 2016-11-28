@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/navy"
     tools:context=".connector.ui.TraceActivity">
 
     <EditText
@@ -27,7 +28,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:text="Launch"
-        android:background="@android:color/darker_gray" />
+        android:textColor="@color/black_color"
+        android:background="@color/warm_yellow" />
 
     <ProgressBar
         android:id="@+id/progressBarPing"
@@ -47,7 +49,8 @@
         android:layout_marginTop="5dp"
         android:onClick="launchTestVpnActivity"
         android:text="Test VPN"
-        android:background="@android:color/darker_gray"
+        android:textColor="@color/black_color"
+        android:background="@color/warm_yellow"
         android:visibility="gone" />
 
     <RelativeLayout

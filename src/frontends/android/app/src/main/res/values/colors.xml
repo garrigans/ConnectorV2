@@ -58,4 +58,10 @@
     <color name="transparent_color">#00000000</color>
     <color name="transparent_dark_color">#bb000000</color>
 
+    <color name="navy">#18121E</color>
+    <color name="gunmetal">#233237</color>
+    <color name="rusty">#984B43</color>
+    <color name="warm_yellow">#EAC67A</color>
+    <color name="sky_blue">#b3edff</color>
+
 </resources>

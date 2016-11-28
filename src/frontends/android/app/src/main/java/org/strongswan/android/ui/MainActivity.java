@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements OnVpnProfileSelec
 		ActionBar bar = getSupportActionBar();
 		bar.setDisplayShowHomeEnabled(true);
 		bar.setDisplayShowTitleEnabled(false);
-		bar.setIcon(R.drawable.ic_launcher);
+		bar.setIcon(R.drawable.pac);
 
 		this.bindService(new Intent(this, VpnStateService.class),
 						 mServiceConnection, Service.BIND_AUTO_CREATE);

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/grey_texture"
+    android:background="@color/navy"
     tools:context=".connector.ui.TestPortAccess">
 
     <EditText
@@ -39,7 +39,8 @@
         android:layout_marginTop="15dp"
         android:text="Test Port"
         android:onClick="testPort"
-        android:background="@android:color/darker_gray"/>
+        android:textColor="@color/black_color"
+        android:background="@color/warm_yellow"/>
 
     <TextView
         android:layout_width="match_parent"

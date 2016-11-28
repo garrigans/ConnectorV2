@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navy"
+    tools:context=".connector.ui.MainActivityCon">
+
+    <android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:grid="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/choice_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:padding="4dp"
+
+        grid:alignmentMode="alignBounds"
+        grid:columnCount="1"
+        grid:rowOrderPreserved="false"
+        grid:useDefaultMargins="true">
+
+        <Button
+            android:id="@+id/buttonQuickVpnTest"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="Quick VPN Test"
+            android:onClick="launchQuickVpnTest"
+            android:alpha="0.85"
+            android:textSize="20dp"
+            android:textColor="@color/black_color"
+            android:background="@color/warm_yellow" />
+
+        <Button
+            android:id="@+id/buttonDiagnosticTools"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            grid:layout_columnWeight="1"
+            grid:layout_gravity="fill_horizontal"
+            android:gravity="center"
+            android:text="Diagnostic Tools"
+            android:onClick="launchDiagnosticTools"
+            android:alpha="0.85"
+            android:textSize="20dp"
+            android:textColor="@color/black_color"
+            android:background="@color/rusty" />
+
+    </android.support.v7.widget.GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentBottom="true"
+        android:text="All Rights Reserved " />
+</RelativeLayout>
+

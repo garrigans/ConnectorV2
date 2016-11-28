@@ -17,13 +17,13 @@
 
     <style name="ApplicationTheme.Base" parent="Theme.AppCompat">
         <item name="colorAccent">@color/accent</item>
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/gunmetal</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
     </style>
 
     <style name="AlertDialogTheme.Base" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/rusty</item>
     </style>
 
 </resources>
