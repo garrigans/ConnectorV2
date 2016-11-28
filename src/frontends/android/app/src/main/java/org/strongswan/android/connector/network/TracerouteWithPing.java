@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with TraceroutePing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.projects.haxor.connector.network;
+package org.strongswan.android.connector.network;
 
 import android.annotation.SuppressLint;
 import android.net.ConnectivityManager;
@@ -27,10 +27,10 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.projects.haxor.connector.enums.ResusltStatus;
-import com.projects.haxor.connector.enums.RouteStatus;
-import com.projects.haxor.connector.enums.StateMachine;
-import com.projects.haxor.connector.ui.TraceActivity;
+import org.strongswan.android.connector.enums.ResusltStatus;
+import org.strongswan.android.connector.enums.RouteStatus;
+import org.strongswan.android.connector.enums.StateMachine;
+import org.strongswan.android.connector.ui.TraceActivity;
 
 import org.strongswan.android.R;
 

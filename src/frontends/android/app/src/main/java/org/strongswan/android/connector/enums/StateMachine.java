@@ -1,4 +1,4 @@
-package com.projects.haxor.connector.enums;
+package org.strongswan.android.connector.enums;
 
 /**
  * Created by haxor on 4/11/16.

@@ -1,4 +1,4 @@
-package com.projects.haxor.connector.ui;
+package org.strongswan.android.connector.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import org.strongswan.android.R;
+import org.strongswan.android.ui.MainActivity;
 
 
 public class MainActivityCon extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class MainActivityCon extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_main);
+        setContentView(R.layout.activity_main2);
 
 //        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
 //        setSupportActionBar(myToolbar);
@@ -62,11 +63,11 @@ public class MainActivityCon extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void launchTestVpnActivity(View v){
-//        System.out.println("Test VPN");
-//        Intent intent = new Intent(MainActivityCon.this, TestVpnActivity.class);
-//        startActivity(intent);
-//    }
+    public void launchTestVpnActivity(View v){
+        System.out.println("Test VPN");
+        Intent intent = new Intent(MainActivityCon.this, MainActivity.class);
+        startActivity(intent);
+    }
 
     public void launchLookupIpActivity(View v){
         System.out.println("Lookup Ip details");

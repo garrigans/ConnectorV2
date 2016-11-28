@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
     Copyright (C) 2012-2016 Tobias Brunner
     Copyright (C) 2012 Giuliano Grassi
     Copyright (C) 2012 Ralf Sager
@@ -142,7 +141,6 @@
     <string name="connect">Connect</string>
 
 
-
     <!--Connector strings-->
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
@@ -161,5 +159,6 @@
     <string name="disconnected">Disconnected...</string>
     <string name="connected">Connected...</string>
     <string name="title_activity_help">HelpActivity</string>
+    <string name="title_activity_launcher">launcherActivity</string>
 
 </resources>

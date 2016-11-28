@@ -1,8 +1,7 @@
-package com.projects.haxor.connector.ui;
+package org.strongswan.android.connector.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import org.strongswan.android.R;
 
@@ -12,12 +11,12 @@ public class IPLookupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iplookup);
+        setContentView(R.layout.activity_iplookup2);
 
 
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+//        setSupportActionBar(myToolbar);
     }
 
 //    @Override

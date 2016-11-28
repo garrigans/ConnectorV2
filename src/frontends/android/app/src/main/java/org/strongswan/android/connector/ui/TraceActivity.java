@@ -17,13 +17,12 @@ You should have received a copy of the GNU General Public License
 along with TraceroutePing.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.projects.haxor.connector.ui;
+package org.strongswan.android.connector.ui;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,12 +37,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.projects.haxor.connector.enums.ResusltStatus;
-import com.projects.haxor.connector.enums.RouteStatus;
-import com.projects.haxor.connector.network.TracerouteContainer;
-import com.projects.haxor.connector.network.TracerouteWithPing;
-
 import org.strongswan.android.R;
+import org.strongswan.android.connector.enums.ResusltStatus;
+import org.strongswan.android.connector.enums.RouteStatus;
+import org.strongswan.android.connector.network.TracerouteContainer;
+import org.strongswan.android.connector.network.TracerouteWithPing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,10 +76,10 @@ public class TraceActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_trace);
+		setContentView(R.layout.activity_trace2);
 
-		Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-		setSupportActionBar(myToolbar);
+//		Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+//		setSupportActionBar(myToolbar);
 
 //		getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 //		getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -201,7 +199,7 @@ public class TraceActivity extends AppCompatActivity {
 			// first init
 			if (convertView == null) {
 				LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				convertView = vi.inflate(R.layout.item_list_trace, null);
+				convertView = vi.inflate(R.layout.item_list_trace2, null);
 
 				TextView textViewNumber = (TextView) convertView.findViewById(R.id.textViewNumber);
 				TextView textViewIp = (TextView) convertView.findViewById(R.id.textViewIp);
