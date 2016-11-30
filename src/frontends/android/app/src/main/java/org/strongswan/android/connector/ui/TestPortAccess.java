@@ -85,6 +85,7 @@ public class TestPortAccess extends AppCompatActivity {
         results.setText("");
         addressToCheck = address.getText().toString();
         portToCheck = port.getText().toString();
+        final String[] errorMessage = {""};
 
         //Hide softkeyboard
         hideKeyboard();
@@ -122,7 +123,7 @@ public class TestPortAccess extends AppCompatActivity {
                     urlConnection.setConnectTimeout(5000); //set timeout to 5 seconds
 
 
-                    System.out.println(readInputStreamToString(urlConnection));
+//                    System.out.println(readInputStreamToString(urlConnection));
 //                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                     System.out.println("here");
 
@@ -152,11 +153,21 @@ public class TestPortAccess extends AppCompatActivity {
 
                 } catch (java.net.SocketTimeoutException e) {
                     System.out.println("Connection timed out.." + e);
+                    errorMessage[0] = e.getMessage();
+                    success = false;
+                    connectionTimedOut = true;
+
+                }catch (java.net.ConnectException e){
+                    System.out.println("Connection error.." + e);
+                    errorMessage[0] = e.getMessage();
                     success = false;
                     connectionTimedOut = true;
 
                 } catch (Exception e) {
                     System.out.println(e);
+                    errorMessage[0] = e.getMessage();
+                    success = false;
+                    connectionTimedOut = true;
                 } finally {
 
 //            urlConnection.disconnect();
@@ -189,7 +200,7 @@ public class TestPortAccess extends AppCompatActivity {
         }else {
             results.setBackgroundColor(Color.RED);
             if (connectionTimedOut){
-                results.setText("Connection timed out");
+                results.setText(errorMessage[0]);
 
             }
 

@@ -6,4 +6,36 @@
     android:background="@color/navy"
     tools:context=".connector.ui.IPLookupActivity">
 
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="address"
+        android:inputType="text"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/lookupIp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Discover"
+        android:onClick="discover"
+        android:textColor="@color/black_color"
+        android:background="@color/warm_yellow"/>
+
+    <ListView
+        android:id="@+id/listViewIpLookup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lookupIp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+
 </RelativeLayout>

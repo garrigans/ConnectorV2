@@ -29,6 +29,7 @@
 
         <activity
             android:name=".connector.ui.OverallMainActivity"
+            android:screenOrientation="portrait"
             android:label="Connector">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +42,7 @@
 
         <activity
             android:name=".connector.ui.MainActivityCon"
+            android:screenOrientation="portrait"
             android:label="Connector">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -50,6 +52,7 @@
         <activity
             android:name=".connector.ui.TraceActivity"
             android:label="Trace Route"
+            android:screenOrientation="portrait"
             android:parentActivityName=".connector.ui.MainActivityCon"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
 
@@ -61,6 +64,7 @@
         <activity
             android:name=".connector.ui.IPLookupActivity"
             android:label="IP Lookup"
+            android:screenOrientation="portrait"
             android:parentActivityName=".connector.ui.MainActivityCon">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -72,6 +76,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="IP Lookup"
+            android:screenOrientation="portrait"
             android:parentActivityName=".connector.ui.MainActivityCon">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -82,6 +87,7 @@
         <activity
             android:name=".connector.ui.HelpActivity"
             android:label="Help"
+            android:screenOrientation="portrait"
             android:parentActivityName=".connector.ui.MainActivityCon">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -90,22 +96,29 @@
         <activity
             android:name=".connector.ui.TestPortAccess"
             android:label="Test Port Access"
+            android:screenOrientation="portrait"
             android:parentActivityName=".connector.ui.MainActivityCon">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="org.strongswan.android.connector.ui.MainActivityCon" />
         </activity>
-        <activity android:name=".ui.VpnProfileDetailActivity" />
         <activity
+            android:screenOrientation="portrait"
+            android:name=".ui.VpnProfileDetailActivity" />
+        <activity
+            android:screenOrientation="portrait"
             android:name=".ui.TrustedCertificatesActivity"
             android:label="@string/trusted_certs_title" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.LogActivity"
             android:label="@string/log_title" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.RemediationInstructionsActivity"
             android:label="@string/remediation_instructions_title" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.VpnProfileSelectActivity"
             android:label="@string/strongswan_shortcut">
             <intent-filter>
@@ -115,6 +128,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.TrustedCertificateImportActivity"
             android:label="@string/import_certificate"
             android:theme="@style/AlertDialogTheme">
