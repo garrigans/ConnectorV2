@@ -80,12 +80,6 @@ public class TraceActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_trace2);
 
-//		Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//		setSupportActionBar(myToolbar);
-
-//		getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
-//		getSupportActionBar().setDisplayShowHomeEnabled(true);
-
 		getWindow().setBackgroundDrawableResource(R.drawable.grey_texture) ;
 
 		this.tracerouteWithPing = new TracerouteWithPing(this);
@@ -100,33 +94,6 @@ public class TraceActivity extends AppCompatActivity {
 
 		initView();
 	}
-
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.toolbar_actions, menu);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		switch (item.getItemId()) {
-//			case R.id.action_settings:
-//				// User chose the "Settings" item, show the app settings UI...
-//				return true;
-//
-//			case R.id.action_favorite:
-//				// User chose the "Favorite" action, mark the current item
-//				// as a favorite...
-//				return true;
-//
-//			default:
-//				// If we got here, the user's action was not recognized.
-//				// Invoke the superclass to handle it.
-//				return super.onOptionsItemSelected(item);
-//
-//		}
-//	}
 
 	/**
 	 * initView, init the main view components (action, adapter...)

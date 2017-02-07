@@ -1,48 +1,41 @@
+/**
+ * @author haxor on 4/11/16.
+ */
+
 package org.strongswan.android.connector.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.webkit.WebView;
 
 import org.strongswan.android.R;
+import org.strongswan.android.connector.utils.BaseBrowser;
 
 
 public class HelpActivity extends AppCompatActivity {
+
+    private WebView wv1;
+
+    // Create a web view to hold the help html page. The page is loaded from the anddroid raw
+    // resources directory.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help2);
 
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
+        // Create the web view.
+        wv1=(WebView)findViewById(R.id.webView);
+        wv1.setWebViewClient(new BaseBrowser());
+
+        wv1.getSettings().setLoadsImagesAutomatically(true);
+        wv1.getSettings().setJavaScriptEnabled(true);
+        wv1.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+
+        // Load the html file from raw resource directory.
+        wv1.loadUrl("file:///android_res/raw/helpdoc.html");
 
     }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.toolbar_actions, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                // User chose the "Settings" item, show the app settings UI...
-//                return true;
-//
-//            case R.id.action_favorite:
-//                // User chose the "Favorite" action, mark the current item
-//                // as a favorite...
-//                return true;
-//
-//            default:
-//                // If we got here, the user's action was not recognized.
-//                // Invoke the superclass to handle it.
-//                return super.onOptionsItemSelected(item);
-//
-//        }
-//    }
 
 }

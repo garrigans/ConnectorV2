@@ -1,8 +1,10 @@
+/**
+ * @author haxor on 4/11/16.
+ */
+
 package org.strongswan.android.connector.enums;
 
-/**
- * Created by haxor on 4/11/16.
- */
+// Used as a state machine to determine the status of the route test.
 
 public enum StateMachine {
     INITIATE,

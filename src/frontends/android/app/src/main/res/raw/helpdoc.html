@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="helpcss.css">
+</head>
+<body>
+
+<h1>Connector how to guide</h1>
+    <p>
+        Connector is a network diagnosis tool which is primarily focused on testing IKEv2 IPSEC VPN connections.
+        The app is spilt into two main parts; A quick Success/Fail vpn connection test which encapsulates the miriad of
+        Connectors sub functions and a network diagnosis/fault finding module. The diagnosis module allows
+        users to explore various stages of a vpn connection to aid in fault finding, additional diagnostic
+        functions are in development.
+    </p>
+<h2>Simple Test or Diagnostics</h2>
+    <p>
+        <ul>
+            <li>
+                <h3>Simple Test</h3>
+                <p>
+                    Best for non technical users or those who just want to see if a VPN connection is possible
+                    from their current location or in their current network environment. The User is required
+                    to setup a VPN profile to connect to the target VPN server, one such use case uses the VPN type of
+                    IKEv2 Certificate + EAP (Username/Password). This closely resembles most IPSEC L2TP connection
+                    configurations. The certificate is required to be manually installed on the android device.
+                    This is due to restrictions imposed by the android operating system.
+                </p>
+            </li>
+            <li>
+                <h3>Diagnostics</h3>
+                <p>
+                    Can be used at any time to check a variety of network parameters and connectivity,
+                    a VPN connection can also be tested from this module. It is intended to aid in fault finding.
+                </p>
+            </li>
+        </ul>
+    </p>
+
+<h2>Test Route</h2>
+    <p>
+        Uses a custom traceroute algorithm to mimmick a standard linux/MS traceroute command. It accepts
+        either ipV4 or domain names to conduct the trace. Currently a trace route is not possible when
+        attempting to conduct a trace over 3g/4g, in this case a straight ping is conducted.
+    </p>
+<h2>Test VPN</h2>
+    <p>
+        This is a UI to a strongSwan instance, users can manage VPN profiles and certificates. A VPN
+        connection can be established through this module. The Simple Test module obfuscates this module
+        to aid in simplicity. Users should use this module if they want to try different VPN configurations
+        or aid in fault finding.
+    </p>
+<h2>IP Lookup</h2>
+    <p>
+        This module allows users to do a quick check on an ip address to discover its geolocation data.
+        It is intended for this to increase from a geolocation grab to a geolocation + who is grab, which
+        will result in more detailed information to aid in fault finding. Users may find this module useful
+        in discovering why a route cannot be reached.
+    </p>
+<h2>Test Port Access</h2>
+    <p>
+        Users can test a specified adresses ports using this module. For example www.facebook.com:80 would
+        result in OK, where as www.facebook.com:500 would result in FAIL. A full port scan module is
+        planned for future releases.
+    </p>
+
+</body>
+</html>

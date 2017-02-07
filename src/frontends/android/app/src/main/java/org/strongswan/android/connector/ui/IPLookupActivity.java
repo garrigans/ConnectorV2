@@ -1,8 +1,13 @@
+/**
+ * @author haxor on 4/11/16.
+ */
+
 package org.strongswan.android.connector.ui;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ListView;
@@ -25,6 +30,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+    This activity is used to look up data about a given ip/url. The data is requested from
+    www.ip-api.com, the data returned is restricted to geolocation data only. However it could
+    be extended to a full IP lookup service.
+ */
 
 public class IPLookupActivity extends AppCompatActivity {
 
@@ -57,52 +67,16 @@ public class IPLookupActivity extends AppCompatActivity {
         adapter = new IpLookupAdapter(this, android.R.layout.simple_list_item_1, lookupData);
         listViewIpLookup.setAdapter(adapter);
 
-
-
-
-
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-//        setSupportActionBar(myToolbar);
-
-
-
     }
 
 
-
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.toolbar_actions, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                // User chose the "Settings" item, show the app settings UI...
-//                return true;
-//
-//            case R.id.action_favorite:
-//                // User chose the "Favorite" action, mark the current item
-//                // as a favorite...
-//                return true;
-//
-//            default:
-//                // If we got here, the user's action was not recognized.
-//                // Invoke the superclass to handle it.
-//                return super.onOptionsItemSelected(item);
-//
-//        }
-//    }
-
+    /**
+     * Post's request to the target url api for ip lookup. Uses the HTTP url connection object,
+     * currently does not support HTTPS. Starts a new thread to conduct the operation before
+     * merging back into the app thread. The response is passed to a buffered writer and converted
+     * into JSON for ease of use.
+     */
     public void discover(View v) {
-        System.out.println("Test Port click");
-
-
         success = false;
         connectionTimedOut = false;
 
@@ -118,44 +92,51 @@ public class IPLookupActivity extends AppCompatActivity {
 
                 try {
 
-
+                    // Construct api url
                     url = new URL("http://ip-api.com/json/" + addressToCheck);
-                    System.out.println("Address to check is: " + addressToCheck);
+                    Log.d(IPLookupActivity.class.getSimpleName(), "Address to check is: " + addressToCheck);
 
-                    System.out.println(url);
+                    Log.d(IPLookupActivity.class.getSimpleName(), "Resolved url is: " + url);
+
+                    // Create a urlConnection object
                     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
                     urlConnection.setConnectTimeout(5000); //set timeout to 5 seconds
 
+                    // Get the response from the api and process it into a useable string.
                     response = readInputStreamToString(urlConnection);
 
+                    // Clean up the response string so that it can be interpreted by JSON.
                     JSONObject jsonResponse = new JSONObject(response.replaceAll("\\\"","\\\'"));
 
-                    System.out.println(jsonResponse.get("as"));
+                    Log.d(IPLookupActivity.class.getSimpleName(), "Response: " + response);
+
+                    // Add each key/value to a List for use in a list view.
                     Iterator<String> iter = jsonResponse.keys();
                     while (iter.hasNext()) {
                         String key = iter.next();
 
                         try {
                             Object value = jsonResponse.get(key);
-                            System.out.println(key + " : " + value);
+//                            System.out.println(key + " : " + value);
                             lookupData.add(key + " : " + value);
                         } catch (JSONException e) {
                             // Something went wrong!
+                            Log.e(IPLookupActivity.class.getSimpleName(), "An error occured when processing the response... " + e);
+
                         }
                     }
-
+                    // Clean up the connection
                     urlConnection.disconnect();
 
                 } catch (java.net.SocketTimeoutException e) {
-                    System.out.println("Connection timed out.." + e);
+                    Log.e(IPLookupActivity.class.getSimpleName(), "Connection timed out..." + e);
                     success = false;
                     connectionTimedOut = true;
 
                 } catch (Exception e) {
-                    System.out.println(e);
+                    Log.e(IPLookupActivity.class.getSimpleName(), "Something else went wrong... " + e);
                 } finally {
-
 //            urlConnection.disconnect();
                 }
 
@@ -175,19 +156,22 @@ public class IPLookupActivity extends AppCompatActivity {
             System.out.println(e);
         }
 
+        Log.d(IPLookupActivity.class.getSimpleName(), "Running results update");
 
-        System.out.println("Running results update");
-
-
-
-
-        if (success){
-
-
-        }else {
-
-        }
+        //TODO: If needed manipulate the listview here.
+//        if (success){
+//
+//
+//        }else {
+//
+//        }
     }
+
+    /*
+     Reads the response from the html connection and returns it in a usable string.
+     * @param connection
+     *          The connection object used for the http call.
+    */
 
     private String readInputStreamToString(HttpURLConnection connection) {
         String result = null;
@@ -202,21 +186,20 @@ public class IPLookupActivity extends AppCompatActivity {
                 sb.append(inputLine);
 
             }
-            System.out.println(sb.toString());
             result = sb.toString();
         }
         catch (Exception e) {
-            System.out.println(e);
+            Log.e(IPLookupActivity.class.getSimpleName(), "An error occured with the string buffer.. Most likely returned null" + e);
             result = null;
         }
         finally {
             if (is != null) {
-                System.out.println("null");
+
                 try {
                     is.close();
                 }
                 catch (IOException e) {
-                    System.out.println(e);
+                    Log.e(IPLookupActivity.class.getSimpleName(), "An error occured" + e);
                 }
             }
         }
@@ -232,10 +215,13 @@ public class IPLookupActivity extends AppCompatActivity {
                 InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
+    // Create the listview to display the data returned by the ip lookup.
     public void createListView(final List data){
 
         adapter = new IpLookupAdapter(this, android.R.layout.simple_list_item_1, data);
         listViewIpLookup.setAdapter(adapter);
+
+        //TODO: This can be used to allow users to select a listview item and expand it to get more data or launch a google map with a location pin.
 
 //        listViewIpLookup.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override

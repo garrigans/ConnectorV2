@@ -1,3 +1,7 @@
+/**
+ * @author haxor on 4/11/16.
+ */
+
 package org.strongswan.android.connector.utils;
 
 import android.content.Context;
@@ -5,10 +9,6 @@ import android.widget.ArrayAdapter;
 
 import java.util.HashMap;
 import java.util.List;
-
-/**
- * Created by haxor on 29/11/16.
- */
 
 public class IpLookupAdapter extends ArrayAdapter<String> {
 

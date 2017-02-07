@@ -30,13 +30,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    <Button
-        android:text="Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonLaunch"
-        android:onClick="testPort"/>
-
     <fragment
             class="org.strongswan.android.ui.VpnProfileListFragment"
             android:id="@+id/profile_list_frag"

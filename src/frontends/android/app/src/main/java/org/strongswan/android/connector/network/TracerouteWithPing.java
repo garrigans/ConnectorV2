@@ -1,20 +1,5 @@
-/*
-This file is part of the project TraceroutePing, which is an Android library
-implementing Traceroute with ping under GPL license v3.
-Copyright (C) 2013  Olivier Goutay
-
-TraceroutePing is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-TraceroutePing is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with TraceroutePing.  If not, see <http://www.gnu.org/licenses/>.
+/**
+ * @author haxor on 4/11/16.
  */
 
 package org.strongswan.android.connector.network;
@@ -38,13 +23,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 
+/* This class contain everything needed to launch a traceroute using the ping command
 
-/**
- * This class contain everything needed to launch a traceroute using the ping command
- * 
- * @author Olivier Goutay
- * 
  */
+
 public class TracerouteWithPing {
 	private static final String PING = "PING";
 	private static final String FROM_PING = "From";
@@ -70,7 +52,7 @@ public class TracerouteWithPing {
 	private RouteStatus traceRouteStatus;
 
 
-	// timeout handling
+	// Timeout handling
 	private static final int TIMEOUT = 60000;
 	private Handler handlerTimeout;
 	private static Runnable runnableTimeout;
@@ -147,7 +129,7 @@ public class TracerouteWithPing {
 	}
 	
 	/**
-	 * The task that ping an ip, with increasing time to live (ttl) value
+	 * The task that ping's an ip, with increasing time to live (ttl)
 	 */
 	private class ExecutePingAsyncTask extends AsyncTask<Void, Void, String> {
 
@@ -163,7 +145,6 @@ public class TracerouteWithPing {
 		 */
 		@Override
 		protected String doInBackground(Void... params) {
-//			setTraceState(StateMachine.RUNNING);
 
 			if (hasConnectivity()) {
 				try {
@@ -173,38 +154,29 @@ public class TracerouteWithPing {
                     			String ip = parseIpFromPing(res);
 
 					if (res.contains(UNREACHABLE_PING) && !res.contains(EXCEED_PING)) {
-						// Create the TracerouteContainer object when ping
-						// failed
+						// Create the TracerouteContainer object when ping failed
 						trace = new TracerouteContainer("", ip, elapsedTime, false);
 
 						setTraceRouteStatus(RouteStatus.FINISH);
 						setTraceResultStatus(ResusltStatus.UNREACHABLE);
 
-						System.out.println("Hit me");
 					} else {
 						// Create the TracerouteContainer object when succeed
 						trace = new TracerouteContainer("", ip, ttl == maxTtl ? Float.parseFloat(parseTimeFromPing(res))
 								: elapsedTime, true);
-
-						System.out.println("Made the hop " );
+						Log.d(TraceActivity.tag, "Made the hop");
 						setTraceResultStatus(ResusltStatus.REACHABLE);
 
 					}
 
-					// Get the host name from ip (unix ping do not support
-					// hostname resolving)
+					// Get the host name from ip (unix ping's do not support hostname resolving)
 					InetAddress inetAddr = InetAddress.getByName(trace.getIp());
 					String hostname = inetAddr.getHostName();
 					String canonicalHostname = inetAddr.getCanonicalHostName();
 					trace.setHostname(hostname);
                                        latestTrace = trace;
-//                                       Log.d(TraceActivity.tag, "hostname : " + hostname);
-//					Log.d(TraceActivity.tag, "canonicalHostname : " + canonicalHostname);
 
-					// Store the TracerouteContainer object
-//					Log.d(TraceActivity.tag, trace.toString());
-
-                    			// Not refresh list if this ip is the final ip but the ttl is not maxTtl
+                    			// Do not refresh the list if this ip is the final ip but the ttl is not maxTtl
                     			// this row will be inserted later
                     			if (!ip.equals(ipToPing) || ttl == maxTtl) {
                         			context.refreshList(trace);
@@ -284,9 +256,8 @@ public class TracerouteWithPing {
 		@Override
 		protected void onPostExecute(String result) {
 			if (!isCancelled) {
-
-				System.out.println("Finished hop..");
-				System.out.println("Hop succesful");
+				Log.d(TraceActivity.tag, "Finished hop");
+				Log.d(TraceActivity.tag, "Hop Succesful");
 
 				try {
 					if (!"".equals(result)) {
@@ -297,7 +268,6 @@ public class TracerouteWithPing {
 
 							Toast.makeText(context, context.getString(R.string.no_connectivity), Toast.LENGTH_SHORT).show();
 						} else {
-//							Log.d(TraceActivity.tag, result);
 
 							if (latestTrace != null && latestTrace.getIp().equals(ipToPing)) {
 								if (ttl < maxTtl) {
@@ -305,18 +275,15 @@ public class TracerouteWithPing {
 									setTraceRouteStatus(RouteStatus.RUNNING);
 
 									ttl = maxTtl;
-									System.out.println("Launching next hop..");
+									Log.d(TraceActivity.tag, "Launching next hop..");
 
 									new ExecutePingAsyncTask(maxTtl).execute();
 								} else {
 
 									setTraceRouteStatus(RouteStatus.FINISH);
 
-
-
 									context.stopProgressBar();
-
-									System.out.println("Finished route..." + getTraceResultStatus());
+									Log.d(TraceActivity.tag, "Finished route" + getTraceResultStatus());
 
 								}
 							} else {
@@ -325,7 +292,7 @@ public class TracerouteWithPing {
 									new ExecutePingAsyncTask(maxTtl).execute();
 								}
 							}
-//							context.refreshList(traces);
+
 						}
 					}
 
